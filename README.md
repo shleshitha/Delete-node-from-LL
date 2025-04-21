@@ -37,11 +37,16 @@ Once you've successfully solved it on LeetCode, proceed with the steps below.
     Write your solution in the corresponding file or create a new one if it’s not already there.
 
 3. Push Your Changes
-    git add .
-    git commit -m "Implemented delete node in my preferred language"
-    git push origin main
+   git add .
+   git commit -m "Implemented delete node in my preferred language"
+   git push origin main
+
 
 4. Wait for GitHub Actions to Test Your Code Automatically
-    The .github/workflows/test.yml file will run the appropriate test file from the tests/ folder.
+The .github/workflows/test.yml file will trigger automated testing using the appropriate test file from the tests/ folder.
 
-    You’ll see a ✅ pass or ❌ fail under the Actions tab or directly in the Pull Request/Commit view.
+Check the Actions tab on GitHub or the Pull Request/Commit view for results.
+
+✅ Test Passed
+
+❌ Test Failed
