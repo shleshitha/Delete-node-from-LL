@@ -45,7 +45,7 @@ Once you've successfully solved it on LeetCode, proceed with the steps below.
 4. Wait for GitHub Actions to Test Your Code Automatically.
    The .github/workflows/test.yml file will trigger automated testing using the appropriate test file from the tests/ folder.
 
-Check the Actions tab on GitHub or the Pull Request/Commit view for results.
+Check the Actions tab on GitHub.
 
 ✅ Test Passed
 
