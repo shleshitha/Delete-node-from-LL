@@ -6,14 +6,6 @@
 
 class Solution:
     def deleteNode(self, node):
-        """
-        :type node: ListNode
-        :rtype: void Do not return anything, modify node in-place instead.
-        """
-        # Ensure that the node is not the last node
-        if node and node.next:
-            # Copy the value from the next node
-            node.val = node.next.val
-            # Skip the next node
-            node.next = node.next.next
+        # implement your code
+        pass
             
