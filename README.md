@@ -37,9 +37,9 @@ Once you've successfully solved it on LeetCode, proceed with the steps below.
     Write your solution in the corresponding file or create a new one if it’s not already there.
 
 3. Push Your Changes
-   git add .
-   git commit -m "Implemented delete node in my preferred language"
-   git push origin main
+   * git add .
+   * git commit -m "Implemented delete node in my preferred language"
+   * git push origin main
 
 
 4. Wait for GitHub Actions to Test Your Code Automatically
