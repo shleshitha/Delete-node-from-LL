@@ -8,3 +8,4 @@ void deleteNode(struct ListNode* node) {
     node->next = temp->next;
     free(temp);
 }
+
