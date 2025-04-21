@@ -1,16 +1,47 @@
-# 🚀 GitHub Automation for Multi-Language Testing
+## 👩‍💻 Project Instructions
 
-This repository is designed to automate the testing of solutions written in **C, C++, Python, and Java**. The project includes:
-- **Solution files** stored in the `solutions/` folder.
-- **Test cases** stored in the `tests/` folder.
-- **GitHub Actions workflow** that runs tests automatically when code is pushed.
+### 🔗 GitHub Repository to Clone
+📁 **Repository Link:**  
+👉 [https://github.com/shleshitha/Delete-node-from-LL](https://github.com/shleshitha/Delete-node-from-LL)
 
 ---
 
-## 📌 Solve the Problem on LeetCode First 🎯
+### ✅ Objective
+Implement the solution for the LeetCode problem:
 
-Before implementing your solution in this repository, **first solve the problem on LeetCode**:  
+👉 **[LeetCode Problem: Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/)**
 
-👉 [LeetCode Problem: Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/)
+---
 
-Once you have successfully solved it on LeetCode, proceed with implementing the solution in this repository.
+### ⚠️ Important Note  
+Before implementing your solution in this GitHub repository,  
+please **first solve the problem on LeetCode** and ensure your approach works.
+
+Once you've successfully solved it on LeetCode, proceed with the steps below.
+
+---
+
+### 📌 Steps to Follow
+
+1. **Fork or Clone the Repository**  
+
+   git clone https://github.com/shleshitha/Delete-node-from-LL.git
+   cd Delete-node-from-LL
+
+2. Implement Your Code
+
+    Navigate to the solutions/ folder.
+
+    Choose your preferred language (C, C++, Python, Java).
+
+    Write your solution in the corresponding file or create a new one if it’s not already there.
+
+3. Push Your Changes
+    git add .
+    git commit -m "Implemented delete node in my preferred language"
+    git push origin main
+
+4. Wait for GitHub Actions to Test Your Code Automatically
+    The .github/workflows/test.yml file will run the appropriate test file from the tests/ folder.
+
+    You’ll see a ✅ pass or ❌ fail under the Actions tab or directly in the Pull Request/Commit view.
