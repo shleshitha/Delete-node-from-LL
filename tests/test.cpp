@@ -43,13 +43,14 @@ int compareLists(struct ListNode* head1, int expected[], int size) {
 }
 
 // Function to run the test case
-void runTestCase(int input[], int size, int nodeToDelete, int expected[], int expected_size) {
+void runTestCase(int input[], int size, int nodeToDelete, int expected[], int expected_size, int *passed) {
     struct ListNode* node = NULL;
     struct ListNode* head = buildList(input, size, &node, nodeToDelete);
     deleteNode(node);
 
     if (compareLists(head, expected, expected_size)) {
         printf("✅ Test Passed\n");
+        (*passed)++;  // Increment passed count
     } else {
         printf("❌ Test Failed\nExpected: ");
         for (int i = 0; i < expected_size; i++) {
@@ -67,47 +68,47 @@ int main() {
     // Test cases
     int input1[] = {4, 5, 1, 9};
     int expected1[] = {4, 1, 9};
-    runTestCase(input1, 4, 5, expected1, 3);
+    runTestCase(input1, 4, 5, expected1, 3, &passed);
     total++;
 
     int input2[] = {4, 5, 1, 9};
     int expected2[] = {4, 5, 9};
-    runTestCase(input2, 4, 1, expected2, 3);
+    runTestCase(input2, 4, 1, expected2, 3, &passed);
     total++;
 
     int input3[] = {1, 2};
     int expected3[] = {2};
-    runTestCase(input3, 2, 1, expected3, 1);
+    runTestCase(input3, 2, 1, expected3, 1, &passed);
     total++;
 
     int input4[] = {1, 2, 3, 4};
     int expected4[] = {1, 2, 4};
-    runTestCase(input4, 4, 3, expected4, 3);
+    runTestCase(input4, 4, 3, expected4, 3, &passed);
     total++;
 
     int input5[] = {10, 20, 30, 40, 50};
     int expected5[] = {10, 20, 40, 50};
-    runTestCase(input5, 5, 30, expected5, 4);
+    runTestCase(input5, 5, 30, expected5, 4, &passed);
     total++;
 
     int input6[] = {1, 100, 1000};
     int expected6[] = {1, 1000};
-    runTestCase(input6, 3, 100, expected6, 2);
+    runTestCase(input6, 3, 100, expected6, 2, &passed);
     total++;
 
     int input7[] = {0, -1, -2, -3};
     int expected7[] = {0, -1, -3};
-    runTestCase(input7, 4, -2, expected7, 3);
+    runTestCase(input7, 4, -2, expected7, 3, &passed);
     total++;
 
     int input8[] = {1000, 2000, 3000, 4000};
     int expected8[] = {1000, 2000, 4000};
-    runTestCase(input8, 4, 3000, expected8, 3);
+    runTestCase(input8, 4, 3000, expected8, 3, &passed);
     total++;
 
     int input9[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     int expected9[] = {1, 2, 3, 4, 5, 7, 8, 9, 10};
-    runTestCase(input9, 10, 6, expected9, 9);
+    runTestCase(input9, 10, 6, expected9, 9, &passed);
     total++;
 
     int largeInput[1000];
@@ -115,7 +116,7 @@ int main() {
     largeInput[500] = 2;  // Node to delete is 2
     int largeExpected[999];
     for (int i = 0; i < 999; i++) largeExpected[i] = 1;
-    runTestCase(largeInput, 1000, 2, largeExpected, 999);
+    runTestCase(largeInput, 1000, 2, largeExpected, 999, &passed);
     total++;
 
     printf("\n\nPassed %d / %d test cases.\n", passed, total);
