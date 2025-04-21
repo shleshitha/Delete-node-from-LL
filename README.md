@@ -25,16 +25,16 @@ Once you've successfully solved it on LeetCode, proceed with the steps below.
 
 1. **Fork or Clone the Repository**  
 
-   git clone https://github.com/shleshitha/Delete-node-from-LL.git
-   cd Delete-node-from-LL
+   * git clone https://github.com/shleshitha/Delete-node-from-LL.git
+   * cd Delete-node-from-LL
 
 2. Implement Your Code
 
-    Navigate to the solutions/ folder.
+   * Navigate to the solutions/ folder.
 
-    Choose your preferred language (C, C++, Python, Java).
+   * Choose your preferred language (C, C++, Python, Java).
 
-    Write your solution in the corresponding file or create a new one if it’s not already there.
+   * Write your solution in the corresponding file or create a new one if it’s not already there.
 
 3. Push Your Changes
    * git add .
@@ -42,8 +42,8 @@ Once you've successfully solved it on LeetCode, proceed with the steps below.
    * git push origin main
 
 
-4. Wait for GitHub Actions to Test Your Code Automatically
-The .github/workflows/test.yml file will trigger automated testing using the appropriate test file from the tests/ folder.
+4. Wait for GitHub Actions to Test Your Code Automatically.
+   The .github/workflows/test.yml file will trigger automated testing using the appropriate test file from the tests/ folder.
 
 Check the Actions tab on GitHub or the Pull Request/Commit view for results.
 
