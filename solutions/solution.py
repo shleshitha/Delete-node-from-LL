@@ -6,7 +6,5 @@
 
 class Solution:
     def deleteNode(self, node):
-        # implement your code
-        
-        pass
-            
+        node.val = node.next.val
+        node.next = node.next.next
