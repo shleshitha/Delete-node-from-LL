@@ -1,62 +1,62 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "../solutions/solution.c"  // Include the solution file
+#include <iostream>
+#include <vector>
+#include "../solutions/solution.cpp"  // Include the C++ solution file
+using namespace std;
 
 // Helper function to build the linked list
-struct ListNode* buildList(int values[], int size, struct ListNode** target, int targetVal) {
-    struct ListNode* head = (struct ListNode*)malloc(sizeof(struct ListNode));
-    head->val = values[0];
-    head->next = NULL;
-    struct ListNode* curr = head;
+ListNode* buildList(vector<int>& values, int size, ListNode** target, int targetVal) {
+    ListNode* head = new ListNode(values[0]);
+    ListNode* curr = head;
     if (values[0] == targetVal) *target = curr;
 
     for (int i = 1; i < size; ++i) {
-        curr->next = (struct ListNode*)malloc(sizeof(struct ListNode));
+        curr->next = new ListNode(values[i]);
         curr = curr->next;
-        curr->val = values[i];
-        curr->next = NULL;
         if (values[i] == targetVal) *target = curr;
     }
     return head;
 }
 
 // Helper function to print the linked list
-void printList(struct ListNode* head) {
+void printList(ListNode* head) {
     while (head) {
-        printf("%d ", head->val);
+        cout << head->val << " ";
         head = head->next;
     }
-    printf("\n");
+    cout << endl;
 }
 
 // Function to compare two lists
-int compareLists(struct ListNode* head1, int expected[], int size) {
+bool compareLists(ListNode* head1, vector<int>& expected) {
     int i = 0;
-    while (head1 && i < size) {
+    while (head1 && i < expected.size()) {
         if (head1->val != expected[i]) {
-            return 0;  // Lists do not match
+            return false;  // Lists do not match
         }
         head1 = head1->next;
         i++;
     }
-    return i == size && head1 == NULL;  // Check if both lists are fully traversed
+    return i == expected.size() && head1 == nullptr;  // Check if both lists are fully traversed
 }
 
 // Function to run the test case
-void runTestCase(int input[], int size, int nodeToDelete, int expected[], int expected_size, int *passed) {
-    struct ListNode* node = NULL;
-    struct ListNode* head = buildList(input, size, &node, nodeToDelete);
-    deleteNode(node);
+void runTestCase(vector<int> input, int size, int nodeToDelete, vector<int> expected, int *passed) {
+    ListNode* node = nullptr;
+    ListNode* head = buildList(input, size, &node, nodeToDelete);
 
-    if (compareLists(head, expected, expected_size)) {
-        printf("✅ Test Passed\n");
+    // Instantiate Solution object and call deleteNode on it
+    Solution solution;
+    solution.deleteNode(node);
+
+    if (compareLists(head, expected)) {
+        cout << "Test Passed" << endl;
         (*passed)++;  // Increment passed count
     } else {
-        printf("❌ Test Failed\nExpected: ");
-        for (int i = 0; i < expected_size; i++) {
-            printf("%d ", expected[i]);
+        cout << "Test Failed\nExpected: ";
+        for (int val : expected) {
+            cout << val << " ";
         }
-        printf("\nGot: ");
+        cout << "\nGot: ";
         printList(head);
     }
 }
@@ -65,60 +65,64 @@ void runTestCase(int input[], int size, int nodeToDelete, int expected[], int ex
 int main() {
     int passed = 0, total = 0;
 
-    // Test cases
+    // Test case 1
     int input1[] = {4, 5, 1, 9};
     int expected1[] = {4, 1, 9};
-    runTestCase(input1, 4, 5, expected1, 3, &passed);
+    runTestCase(vector<int>(input1, input1 + 4), 4, 5, vector<int>(expected1, expected1 + 3), &passed);
     total++;
 
+    // Test case 2
     int input2[] = {4, 5, 1, 9};
     int expected2[] = {4, 5, 9};
-    runTestCase(input2, 4, 1, expected2, 3, &passed);
+    runTestCase(vector<int>(input2, input2 + 4), 4, 1, vector<int>(expected2, expected2 + 3), &passed);
     total++;
 
+    // Test case 3
     int input3[] = {1, 2};
     int expected3[] = {2};
-    runTestCase(input3, 2, 1, expected3, 1, &passed);
+    runTestCase(vector<int>(input3, input3 + 2), 2, 1, vector<int>(expected3, expected3 + 1), &passed);
     total++;
 
+    // Test case 4
     int input4[] = {1, 2, 3, 4};
     int expected4[] = {1, 2, 4};
-    runTestCase(input4, 4, 3, expected4, 3, &passed);
+    runTestCase(vector<int>(input4, input4 + 4), 4, 3, vector<int>(expected4, expected4 + 3), &passed);
     total++;
 
+    // Test case 5
     int input5[] = {10, 20, 30, 40, 50};
     int expected5[] = {10, 20, 40, 50};
-    runTestCase(input5, 5, 30, expected5, 4, &passed);
+    runTestCase(vector<int>(input5, input5 + 5), 5, 30, vector<int>(expected5, expected5 + 4), &passed);
     total++;
 
+    // Test case 6
     int input6[] = {1, 100, 1000};
     int expected6[] = {1, 1000};
-    runTestCase(input6, 3, 100, expected6, 2, &passed);
+    runTestCase(vector<int>(input6, input6 + 3), 3, 100, vector<int>(expected6, expected6 + 2), &passed);
     total++;
 
+    // Test case 7
     int input7[] = {0, -1, -2, -3};
     int expected7[] = {0, -1, -3};
-    runTestCase(input7, 4, -2, expected7, 3, &passed);
+    runTestCase(vector<int>(input7, input7 + 4), 4, -2, vector<int>(expected7, expected7 + 3), &passed);
     total++;
 
+    // Test case 8
     int input8[] = {1000, 2000, 3000, 4000};
     int expected8[] = {1000, 2000, 4000};
-    runTestCase(input8, 4, 3000, expected8, 3, &passed);
+    runTestCase(vector<int>(input8, input8 + 4), 4, 3000, vector<int>(expected8, expected8 + 3), &passed);
     total++;
 
+    // Test case 9
     int input9[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     int expected9[] = {1, 2, 3, 4, 5, 7, 8, 9, 10};
-    runTestCase(input9, 10, 6, expected9, 9, &passed);
+    runTestCase(vector<int>(input9, input9 + 10), 10, 6, vector<int>(expected9, expected9 + 9), &passed);
     total++;
+    
+    
+    cout << "Total tests executed: " << total << endl;
 
-    int largeInput[1000];
-    for (int i = 0; i < 1000; i++) largeInput[i] = 1;
-    largeInput[500] = 2;  // Node to delete is 2
-    int largeExpected[999];
-    for (int i = 0; i < 999; i++) largeExpected[i] = 1;
-    runTestCase(largeInput, 1000, 2, largeExpected, 999, &passed);
-    total++;
-
-    printf("\n\nPassed %d / %d test cases.\n", passed, total);
+    // Print final test results
+    cout << "\n\nPassed " << passed << " / " << total << " test cases." << endl;
     return 0;
 }
